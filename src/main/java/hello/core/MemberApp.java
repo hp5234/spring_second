@@ -11,7 +11,13 @@ public class MemberApp {
         // 만들어진 회원도메인을 테스트
         // 테스트프레임워크를 사용하지 않고 테스트를 구현
 
-        MemberService memberService = new MemberServiceImpl();
+        // AppConfig 추가 이후 변경
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+
+        // AppConfig 추가 이전
+        // 직접 생성한 모습
+        // MemberService memberService = new MemberServiceImpl();
 
         // member 생성
         Member member = new Member(1L, "memberA", Grade.VIP);
