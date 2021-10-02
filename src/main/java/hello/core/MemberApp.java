@@ -4,6 +4,9 @@ import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
+import hello.core.order.OrderService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
@@ -11,9 +14,18 @@ public class MemberApp {
         // 만들어진 회원도메인을 테스트
         // 테스트프레임워크를 사용하지 않고 테스트를 구현
 
+        // 스프링으로 변경
+        // 해당코드로 인해 ApplicationContext 컨테이너에 AppConfig 와 @Bean 이 붙은
+        // 메서드들을 전부 등록하여 관리해준다.
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        // getBean()을 통해 메스드를 호출
+        // 메서드는 메서드 이름으로 등록된다.
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
+
         // AppConfig 추가 이후 변경
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
+        // AppConfig appConfig = new AppConfig();
+        // MemberService memberService = appConfig.memberService();
 
         // AppConfig 추가 이전
         // 직접 생성한 모습
