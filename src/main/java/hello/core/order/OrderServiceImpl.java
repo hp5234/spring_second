@@ -30,4 +30,10 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    // 스프링의 싱글톤보장을 테스트하기 위한 테스트용도
+    // ConfigurationSingletonTest 에서 테스트
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
