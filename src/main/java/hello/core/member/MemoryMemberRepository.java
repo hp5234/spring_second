@@ -2,6 +2,7 @@ package hello.core.member;
 
 import ch.qos.logback.core.OutputStreamAppender;
 import com.sun.source.tree.MemberReferenceTree;
+import org.springframework.stereotype.Component;
 
 import java.nio.MappedByteBuffer;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 // 데이터베이스 방식이 미확정으로
 // 메모리에 저장 하는 방식
 // 메모리에서만 진행하므로 테스트용으로만 사용해야 함
+@Component
 public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
